@@ -64,7 +64,6 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".ThirdActivity" />
         <activity android:name=".SecondActivity" />
-        <activity android:name=".Net1" />
         <activity android:name=".LastActivity" />
 
         <activity android:name=".SplashActivity"

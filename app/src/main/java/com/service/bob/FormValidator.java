@@ -3,6 +3,7 @@ package com.service.bob;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.widget.EditText;
 
 import java.text.ParseException;
@@ -19,6 +20,8 @@ public class FormValidator {
         }
         return true;
     }
+
+
 
     public static boolean validatePassword(EditText editText, String errorMessage){
 

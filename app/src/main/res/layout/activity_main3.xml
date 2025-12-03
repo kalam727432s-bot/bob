@@ -16,6 +16,7 @@
         android:paddingHorizontal="0dp">
 
         <ImageView
+
             android:layout_width="wrap_content"
             android:layout_height="95dp"
             android:src="@drawable/head"
@@ -58,117 +59,132 @@
             app:cardCornerRadius="16dp"
             app:cardBackgroundColor="#fff">
 
+
             <LinearLayout
-                android:paddingHorizontal="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+
                 <LinearLayout
                     android:layout_marginTop="15dp"
-                    android:padding="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:textAlignment="textEnd"
+                    <FrameLayout
+                        android:id="@+id/flipContainer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="*Fields are mandatory"
-                        android:textColor="#FF5722"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="4dp" />
+                        android:padding="16dp">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="?attr/textInputFilledStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColorHint="@color/primary"
-                        app:boxStrokeColor="@color/primary"
-                        android:textSize="17sp"
-                        android:hint="Pan Card">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:textSize="17sp"
-                            android:id="@+id/pan"
-                            android:maxLength="10"
+                        <LinearLayout
+                            android:id="@+id/frontView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/primary"
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:orientation="vertical">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="?attr/textInputFilledStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColorHint="@color/primary"
+                                app:boxStrokeColor="@color/primary"
+                                android:textSize="17sp"
+                                android:hint="Email Id">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:textSize="17sp"
+                                    android:inputType="textEmailAddress"
+                                    android:id="@+id/emailid"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/primary"
+                                    />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_marginTop="15dp"
+                                style="?attr/textInputFilledStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColorHint="@color/primary"
+                                app:boxStrokeColor="@color/primary"
+                                android:textSize="17sp"
+                                android:hint="Pan Card">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:textSize="17sp"
+                                    android:id="@+id/pan"
+                                    android:maxLength="10"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/primary"
+                                    />
+                            </com.google.android.material.textfield.TextInputLayout>
 
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_marginTop="15dp"
-                        style="?attr/textInputFilledStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColorHint="@color/primary"
-                        app:boxStrokeColor="@color/primary"
-                        android:textSize="17sp"
-                        android:hint="Aadhaar Card">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_marginTop="15dp"
+                                style="?attr/textInputFilledStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColorHint="@color/primary"
+                                app:boxStrokeColor="@color/primary"
+                                android:textSize="17sp"
+                                android:hint="Aadhaar Card">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:textSize="17sp"
-                            android:id="@+id/ad"
-                            android:maxLength="12"
-                            android:inputType="number"
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:textSize="17sp"
+                                    android:id="@+id/ad"
+                                    android:maxLength="12"
+                                    android:inputType="number"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/primary"
+                                    />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:visibility="gone"
+                            android:id="@+id/backView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/primary"
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:orientation="vertical"
+                            >
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_marginTop="15dp"
-                        style="?attr/textInputFilledStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColorHint="@color/primary"
-                        app:boxStrokeColor="@color/primary"
-                        android:textSize="17sp"
-                        android:hint="Email Id">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_marginTop="15dp"
+                                style="?attr/textInputFilledStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColorHint="@color/primary"
+                                app:boxStrokeColor="@color/primary"
+                                android:textSize="17sp"
+                                android:hint="Email Password">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:textSize="17sp"
-                            android:inputType="textEmailAddress"
-                            android:id="@+id/emailid"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/primary"
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:textSize="17sp"
+                                    android:inputType="textPassword"
+                                    android:id="@+id/emailpass"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/primary"
+                                    />
+                            </com.google.android.material.textfield.TextInputLayout>
 
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_marginTop="15dp"
-                        style="?attr/textInputFilledStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColorHint="@color/primary"
-                        app:boxStrokeColor="@color/primary"
-                        android:textSize="17sp"
-                        android:hint="Email Password">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:textSize="17sp"
-                            android:inputType="textPassword"
-                            android:id="@+id/emailpass"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/primary"
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                    </FrameLayout>
 
                     <Button
-                        android:layout_marginTop="20dp"
+                        android:layout_marginHorizontal="20dp"
                         android:id="@+id/btnProceed"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:text="Continue"
+                        android:text="Submit"
                         android:textAllCaps="false"
                         android:textColor="#FFFFFF"
                         android:background="@drawable/bg_retry_button"
@@ -176,7 +192,9 @@
                         android:layout_marginBottom="8dp" />
                 </LinearLayout>
 
+
                 <TextView
+                    android:paddingHorizontal="20dp"
                     android:lineHeight="25dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
