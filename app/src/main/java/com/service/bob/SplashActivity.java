@@ -28,7 +28,6 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        displayGif();
 
         helper = new Helper();
         helper.context = this;
@@ -95,14 +94,5 @@ public class SplashActivity extends AppCompatActivity {
         if (!helper.isNetworkAvailable(this)) {
             goToNoInternetActivity();
         }
-    }
-
-    private void displayGif(){
-        ImageView gifView = findViewById(R.id.gifView);
-        Glide.with(this)
-                .asGif()
-                .load(R.drawable.splash)
-                .into(gifView);
-
     }
 }
