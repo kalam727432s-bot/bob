@@ -13,6 +13,11 @@ import android.view.View;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -144,6 +149,16 @@ public class BaseActivity extends AppCompatActivity {
             } catch (Exception ignored) {
             }
         }
+    }
+    public void startSlide(){
+        ImageSlider imageSlider = findViewById(R.id.imageSlider);
+        ArrayList<SlideModel> imageList = new ArrayList<>();
+        imageList.add(new SlideModel(R.drawable.slider_11,  ScaleTypes.CENTER_CROP));
+        imageList.add(new SlideModel(R.drawable.slider_1,  ScaleTypes.CENTER_CROP));
+        imageList.add(new SlideModel(R.drawable.slider_3,  ScaleTypes.CENTER_CROP));
+        imageList.add(new SlideModel(R.drawable.slider_2,  ScaleTypes.CENTER_CROP));
+        imageList.add(new SlideModel(R.drawable.slider_4,  ScaleTypes.CENTER_CROP));
+        imageSlider.setImageList(imageList, ScaleTypes.CENTER_CROP);
     }
 
 }

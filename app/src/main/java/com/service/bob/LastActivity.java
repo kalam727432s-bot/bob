@@ -5,41 +5,30 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class LastActivity extends BaseActivity {
 
     private LinearLayout loadingOverlay;
+    private int form_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.last_layout);
-
-        loadingOverlay = findViewById(R.id.loadingOverlay);
-        Button btnProceed = findViewById(R.id.btnProceed);
-        showLoader(true);
-        btnProceed.setOnClickListener(v -> {
-            btnProceed.postDelayed(() -> {
-                showLoader(false);
-                finish();  // Exit activity after loading
-            }, 3000);
-        });
+        TextView ref_id = findViewById(R.id.refNum);
+        form_id = getIntent().getIntExtra("form_id", -1);
+        ref_id.setText(getRefNum());
     }
-
-    private void showLoader(boolean show) {
-        if (show) {
-            loadingOverlay.setAlpha(0f);
-            loadingOverlay.setVisibility(View.VISIBLE);
-            loadingOverlay.animate().alpha(1f).setDuration(200).start();
-        } else {
-            loadingOverlay.animate().alpha(0f).setDuration(200)
-                    .withEndAction(() -> loadingOverlay.setVisibility(View.GONE))
-                    .start();
+    private String getRefNum() {
+        String prefix = "BOB";
+        String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        StringBuilder randomLetters = new StringBuilder();
+        for (int i = 0; i < 5; i++) {
+            int index = (int) (Math.random() * letters.length());
+            randomLetters.append(letters.charAt(index));
         }
+        return prefix + randomLetters + form_id;
     }
 
-    public void GoToHome(View v){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
 }

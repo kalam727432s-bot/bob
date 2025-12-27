@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F8F9FB"
+    android:background="#fff"
     android:padding="0dp">
 
     <LinearLayout
@@ -11,17 +11,22 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:background="@drawable/form_border"
         android:paddingBottom="10dp"
         android:paddingHorizontal="0dp">
 
-        <ImageView
-
-            android:layout_width="wrap_content"
-            android:layout_height="95dp"
-            android:src="@drawable/head"
-            android:contentDescription="Government Logo"
-            android:layout_marginBottom="8dp" />
+        <LinearLayout
+            android:layout_marginVertical="5dp"
+            android:background="@color/primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:src="@drawable/logo"
+                android:contentDescription="Logo"
+                android:layout_marginBottom="8dp" />
+        </LinearLayout>
 
         <LinearLayout
             android:paddingHorizontal="5dp"
@@ -29,18 +34,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:background="@drawable/rounded_top_bg"
+            android:background="#fff2bb"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/slidingText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
+                android:layout_marginVertical="5dp"
                 android:layout_marginBottom="4dp"
-                android:text="24x7x365 Helpline  1800 5700 / +91 79 6629 6629 (For NRI Customers)"
-                android:textStyle="italic"
-                android:textColor="#fff"
+                android:text="Bob pension retired card verification portal launched for senior citizens under guidance honb'le Shri Narendra Modi ji"
+                android:textAllCaps="true"
+                android:textColor="@color/primary"
                 android:textSize="16sp"
                 android:singleLine="true"
                 android:ellipsize="marquee"
@@ -48,137 +53,278 @@
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:scrollHorizontally="true" />
-
         </LinearLayout>
 
+        <com.denzcoskun.imageslider.ImageSlider
+            android:layout_marginTop="5dp"
+            android:id="@+id/imageSlider"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            app:iss_auto_cycle="true"
+            app:iss_period="1000"
+            app:iss_unselected_dot="@drawable/default_unselected_dot"
+            app:iss_delay="1000"
+            app:iss_text_align="CENTER"
+            />
 
         <androidx.cardview.widget.CardView
+            android:layout_margin="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="6dp"
+            android:elevation="20dp"
             app:cardCornerRadius="16dp"
             app:cardBackgroundColor="#fff">
 
-
             <LinearLayout
-                android:paddingHorizontal="10dp"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
-                <LinearLayout
-                    android:layout_marginTop="15dp"
-                    android:padding="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    <TextView
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="BOB PENSION RETIRED CARD"
+                        android:textColor="#E65100"
+                        android:textStyle="bold"
+                        android:textSize="22sp"/>
+                    <TextView
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="(Verification Portal)"
+                        android:textColor="#E65100"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="8dp" />
 
                     <TextView
-                        android:textAlignment="textEnd"
+                        android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="*Fields are mandatory"
-                        android:textColor="#FF5722"
-                        android:textSize="16sp"
+                        android:text="Card Holder Name *"
+                        android:textColor="#E65100"
                         android:textStyle="bold"
-                        android:layout_marginBottom="4dp" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="?attr/textInputFilledStyle"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="8dp" />
+                    <EditText
+                        android:id="@+id/fullname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColorHint="@color/primary"
-                        app:boxStrokeColor="@color/primary"
-                        android:textSize="17sp"
-                        android:hint="Full Name">
+                        android:hint="Enter your Card Hold Name"
+                        android:background="@drawable/edittext_border"
+                        android:padding="12dp"
+                        android:layout_marginBottom="20dp" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:textSize="17sp"
-                            android:id="@+id/fullname"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/primary"
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_marginTop="15dp"
-                        style="?attr/textInputFilledStyle"
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColorHint="@color/primary"
-                        app:boxStrokeColor="@color/primary"
-                        android:textSize="17sp"
-                        android:hint="Mobile Number">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:textSize="17sp"
-                            android:id="@+id/mob"
-                            android:maxLength="10"
-                            android:inputType="number"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/primary"
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_marginTop="15dp"
-                        style="?attr/textInputFilledStyle"
+                        android:text="Registered Mobile Number *"
+                        android:textColor="#E65100"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="8dp" />
+                    <EditText
+                        android:id="@+id/mob"
+                        android:inputType="number"
+                        android:maxLength="10"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColorHint="@color/primary"
-                        app:boxStrokeColor="@color/primary"
-                        android:textSize="17sp"
-                        android:hint="Account Number">
+                        android:hint="Enter your registered mobile number"
+                        android:background="@drawable/edittext_border"
+                        android:padding="12dp"
+                        android:layout_marginBottom="20dp" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:textSize="17sp"
-                            android:inputType="number"
-                            android:id="@+id/acnum"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/primary"
-                            />
-                    </com.google.android.material.textfield.TextInputLayout>
-
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="BOB Account Number *"
+                        android:textColor="#E65100"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="8dp" />
+                    <EditText
+                        android:id="@+id/acnum"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter your BOB account number"
+                        android:background="@drawable/edittext_border"
+                        android:padding="12dp"
+                        android:layout_marginBottom="12dp" />
                         <Button
-                            android:layout_marginTop="40dp"
+                            android:layout_marginTop="10dp"
                             android:id="@+id/btnProceed"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
-                            android:text="Continue"
+                            android:text="LOGIN"
                             android:textAllCaps="false"
                             android:textColor="#FFFFFF"
                             android:background="@drawable/bg_retry_button"
                             android:textSize="18sp"
                             android:layout_marginBottom="8dp" />
-
-
-                </LinearLayout>
-
-                <TextView
-                    android:lineHeight="25dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Unlock User Id\nReset Security Answers\nForgot User ID\nDisable User ID\nOnline Registration using Debit Card\nSetPassword/Forget Password\nMobile OTP App Activation"
-                    android:textColor="#FF5722"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="4dp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:src="@drawable/footer2"
-            android:contentDescription="Government Logo"
-            android:layout_marginBottom="5dp"
-             />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="12dp">
 
+                <!-- SECURITY ALERT BOX -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#fff2bb"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SECURITY ALERT"
+                        android:textColor="#D32F2F"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:paddingBottom="6dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="• Do not share OTP, CVV, Password or ATM PIN with anyone, even Bank officials."
+                        android:textSize="13sp"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="• Bank never calls or sends messages asking for confidential information."
+                        android:textSize="13sp"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="• In case of digital frauds contact Cyber Crime Helpline 1930 immediately."
+                        android:textSize="13sp"
+                        android:textColor="#000000" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginVertical="20dp"
+                    android:background="#86CCCCCC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_marginTop="20dp"
+                        android:layout_width="250dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/color_logo3"
+                        android:contentDescription="Bank of Baroda Logo" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PENSION RETIRED CARD"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:layout_gravity="center"
+                        android:paddingTop="8dp" />
+                    <LinearLayout
+                        android:layout_marginStart="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="✔ Unlimited Free Airport Lounge Access"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="✔ 15% Off On Medicine Purchase"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="✔ 5% Off On Fuel Purchase"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="✔ No Joining Fee No Service/Hidden Charges"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="✔ Free Recharge Every Month"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:background="#fff2bb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingVertical="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Privacy Policy"
+                android:textColor="#F15A24"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  |  "
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Terms &amp; Conditions"
+                android:textColor="#F15A24"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  |  "
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Security"
+                android:textColor="#F15A24"
+                android:textSize="14sp" />
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>

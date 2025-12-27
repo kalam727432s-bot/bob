@@ -55,6 +55,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation ("com.github.denzcoskun:ImageSlideshow:0.1.0")
     implementation(libs.cardview)
     implementation(libs.appcompat)
     implementation(libs.material)

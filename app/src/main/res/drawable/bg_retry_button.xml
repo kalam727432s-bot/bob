@@ -1,14 +1,19 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <solid android:color="@color/primary" />
-            <corners android:radius="16dp" />
+            <gradient
+                android:startColor="@color/primary1"
+                android:endColor="@color/primary1"
+                android:angle="0" /> <corners android:radius="16dp" />
         </shape>
     </item>
 
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/primary" />
+            <gradient
+                android:startColor="@color/primary"
+                android:endColor="@color/primary"
+                android:angle="0" />
             <corners android:radius="16dp" />
         </shape>
     </item>

